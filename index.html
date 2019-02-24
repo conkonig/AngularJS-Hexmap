@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Hexagonal Grid by Codin @ Codesmite.com</title>
+    <meta name="description" content="Hexagonal Grid by Codin @ Codesmite.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body>
+    <div class="master" ng-app="myApp" ng-controller="myController" id="myController" ng-init="names=['Jani','Hege','Kai']">
+        <ul id="grid" class="clear">
+            <li class="" ng-repeat="x in points" ng-style="{{x.style}}">
+                <div class="hexagon style-{{x.status}}" data-id="{{x.status}}"></div>
+            </li>
+        </ul>
+        <div class="item-desc">{{viewableVote}}</div>
+    </div>
+    
+</body>
+<script>
+    var app = angular.module('myApp', []);
+
+    app.controller('myController', ['$scope', '$window', '$http', function ($scope, $window, $http) {
+        $http.get("data.txt")
+            .then(function (response) {
+                $scope.points = processData(response.data);
+
+                let gridWidth = 180;
+                let gridRowLength = 4;
+                //let transX = gridRowLength * 2;   // 8
+                //let transY = gridRowLength + 1;   // 5
+                let pointWidth = Math.max((gridWidth / gridRowLength) / 2);
+                let pointHeight = Math.max(pointWidth * 1.13333);
+                
+                // gridWidth = 90;
+                // gridRowLength = 3;
+                // pointWidth = 15;
+                // pointHeight = 17;
+
+                $scope.points.forEach(function(point) {
+                    // console.log(point);
+                    point['style'] = { 'padding':  pointHeight + 'px ' + pointWidth + 'px ' };
+
+                    if( point['row'] > 1){
+                        point['style']['margin-top'] = '-'+((pointHeight / 2) - 1) +'px';
+                    }
+                    if( (point['row'] % 2) == 0 ){
+                        point['style']['transform'] = 'translateX(50%) rotate(-60deg) skewY(30deg)';
+                    }
+                    
+                });
+
+                $('#grid').css('width', gridWidth + 'px');
+                $window.points = $scope.points;
+                $scope.viewableVote = "Hover to see Vote";
+                console.log($scope.points);
+                // console.log($scope.pointStyle);
+                // $('#grid li').each(function(el){
+                //     $(el).css('padding', pointHeight + 'px ' + pointWidth + 'px ');
+                // });
+                // padding: 17px 15px 17px 15px;
+
+            });
+        
+        $scope.updateViewable = function (index) {
+            let response = '';
+            if(index == 0){
+                response = 'Remainers';
+            }else if (index == 1){
+                response = 'Leavers';
+            }
+            $scope.viewableVote = response;
+        }
+    }]);
+
+    function processData(data) {
+        var lines = data.split(/\r\n|\n/);
+        // var headers = allTextLines[0].split('*');
+        var points = [];
+        for (var i = 0; i < lines.length; i++) {
+            var line = lines[i];
+            for (var j = 0; j < line.length; j++) {
+                var mapPoint = new MapPoint(i+1, j+1, line[j], '');
+                points.push(mapPoint);
+            }
+        }
+        return points;
+    }
+
+    $(function () {
+        $(".master").on("mouseover", ".hexagon", function() {
+            let gridItemStatus = $(this).data('id');
+            angular.element('#myController').scope().updateViewable(gridItemStatus);
+            angular.element('#myController').scope().$apply();
+        });
+    });
+
+    function resizeMap(width){
+        
+    }
+
+    function MapPoint(row, column, status, style) {
+        this.row = row;
+        this.column = column;
+        this.status = status;
+        this.style = style;
+    }
+
+    app.directive("testDirective", function () {
+        return {
+            template: "I was made in a directive constructor!"
+        };
+    });
+
+</script>
+
+</html>
