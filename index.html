@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,73 +16,126 @@
         ng-init="names=['Jani','Hege','Kai']">
         <ul id="grid" class="clear">
             <li class="" ng-repeat="x in points" ng-style="{{x.style}}">
-                <div class="hexagon style-{{x.status}}" data-id="{{x.status}}"></div>
+                <div class="hexagon style-{{x.status}}" data-id="{{x.id}}"></div>
             </li>
         </ul>
-        <div class="item-desc">{{viewableVote}}</div>
+        <div class="item-desc">{{viewable.area}} : Voted - {{viewable.vote}} : Remain - {{viewable.remain}} : Leave - {{viewable.leave}}</div>
     </div>
-
 </body>
 <script>
     var app = angular.module('myApp', []);
-
     app.controller('myController', ['$scope', '$window', '$http', function ($scope, $window, $http) {
         $http.get("data.txt")
             .then(function (response) {
-                $scope.points = processData(response.data);
-
-                let gridWidth = 180;
-                let gridRowLength = 4;
-                //let transX = gridRowLength * 2;   // 8
-                //let transY = gridRowLength + 1;   // 5
-                let pointWidth = Math.max((gridWidth / gridRowLength) / 2);
-                let pointHeight = Math.max(pointWidth * 1.13333);
-                // gridWidth = 90;
-                // gridRowLength = 3;
-                // pointWidth = 15;
-                // pointHeight = 17;
-
-                $scope.points.forEach(function (point) {
-                    point['style'] = { 'padding': pointHeight + 'px ' + pointWidth + 'px ' };
-
-                    if (point['row'] > 1) {
-                        point['style']['margin-top'] = '-' + ((pointHeight / 2) - 1) + 'px';
-                    }
-                    if ((point['row'] % 2) == 0) {
-                        point['style']['transform'] = 'translateX(50%) rotate(-60deg) skewY(30deg)';
-                    }
-
+                $scope.src = processData(response.data);
+                $window.src = $scope.src;
+                console.log($scope.src);
+            }).then(function(){
+            $http.get("map.txt")
+                .then(function (response) {
+                    $scope.points = processMap(response.data);
+                    let gridWidth = 400;
+                    let gridRowLength = 10;
+                    let pointWidth = Math.max((gridWidth / gridRowLength) / 2);
+                    let pointHeight = Math.max(pointWidth * 1.13333);
+                    $scope.points.forEach(function (point) {
+                        point['style'] = { 'padding': pointHeight + 'px ' + pointWidth + 'px ' };
+                        if (point['row'] > 1) {
+                            point['style']['margin-top'] = '-' + ((pointHeight / 2) - 1) + 'px';
+                        }
+                        if ((point['row'] % 2) == 0) {
+                            point['style']['transform'] = 'translateX(50%) rotate(-60deg) skewY(30deg)';
+                        }
+                    });
+                    $('#grid').css('width', gridWidth + 'px');
+                    $window.points = $scope.points;
+                    $scope.viewableVote = "Hover to see Vote";
+                    console.log($scope.points.length);
+                    console.log($scope.points);
                 });
-
-                $('#grid').css('width', gridWidth + 'px');
-                $window.points = $scope.points;
-                $scope.viewableVote = "Hover to see Vote";
-                console.log($scope.points);
             });
-
-        $scope.updateViewable = function (index) {
-            let response = '';
-            if (index == 0) {
-                response = 'Remainers';
-            } else if (index == 1) {
-                response = 'Leavers';
-            }
-            $scope.viewableVote = response;
+        $scope.updateViewable = function (id) {
+            $scope.viewable = $scope.points[id];
         }
     }]);
 
-    function processData(data) {
+    function processData(allText) {
+        var allTextLines = allText.split(/\r\n|\n/);
+        var headers = allTextLines[0].split(',');
+        var count = 0;
+        var dataPoints = [];
+        for (var i = 1; i < allTextLines.length; i++) {
+            var data = allTextLines[i].split(',');
+            if (data.length == headers.length) {
+                var dataPoint = new DataPoint(count, undefined, undefined, undefined, undefined, undefined);
+                for (var j = 0; j < headers.length; j++) {
+                    dataPoint[headers[j]] = data[j];
+                }
+                dataPoints.push(dataPoint);
+                count++;
+            }
+        }
+        return dataPoints;
+    }
+
+    function DataPoint(id, region, area, vote, remain, leave) {
+        this.id = id;
+        this.region = region;
+        this.area = area;
+        this.vote = vote;
+        this.remain = remain;
+        this.leave = leave;
+    }
+
+    function processMap(data) {
+        console.log( src[0]['region'], src[0]['area']   );
         var lines = data.split(/\r\n|\n/);
-        // var headers = allTextLines[0].split('*');
         var points = [];
+        var count = 0;
         for (var i = 0; i < lines.length; i++) {
             var line = lines[i];
-            for (var j = 0; j < line.length; j++) {
-                var mapPoint = new MapPoint(i + 1, j + 1, line[j], '');
+            var cols = line.split(',');
+            for (var j = 0; j < cols.length; j++) {
+
+                let id = count;
+                let row = i + 1;
+                let column = j + 1;
+                var mapPoint = new MapPoint(id, row, column, 2, undefined, undefined, undefined, undefined, 2, undefined);
+                if(cols[j] != 'X'){
+                    let index = cols[j];
+                    let vote = src[index]['vote'];
+                    let remain = src[index]['remain'];
+                    let leave = src[index]['leave'];
+                    let area = src[index]['area'];
+                    let region = src[index]['region'];
+                    let style, status;
+                    if(vote == 'r'){
+                        vote = 'Remain';
+                        style = status = 0;
+                    }else if (vote == 'l'){
+                        vote = 'Leave';
+                        style = status = 1;
+                    }
+                    mapPoint = new MapPoint(id, row, column, status, remain, leave, area, region, style, vote);
+                }
+                count++;
                 points.push(mapPoint);
             }
         }
         return points;
+    }
+
+    function MapPoint(id, row, column, status, remain, leave, area, region, style, vote) {
+        this.id = id;
+        this.row = row;
+        this.column = column;
+        this.status = status;
+        this.remain = remain;
+        this.leave = leave;
+        this.area = area;
+        this.region = region;
+        this.style = style;
+        this.vote = vote;
     }
 
     $(function () {
@@ -93,17 +145,6 @@
             angular.element('#myController').scope().$apply();
         });
     });
-
-    function resizeMap(width) {
-
-    }
-
-    function MapPoint(row, column, status, style) {
-        this.row = row;
-        this.column = column;
-        this.status = status;
-        this.style = style;
-    }
 
     app.directive("testDirective", function () {
         return {
