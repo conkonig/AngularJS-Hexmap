@@ -1,0 +1,270 @@
+<style>
+.hex-map-visualisation{height:100%;display:inline-block;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;background:#282828;position:relative;width:100%;margin:auto}.hex-map-visualisation::-webkit-scrollbar{width:0;height:0}.hex-map-visualisation h1,.hex-map-visualisation h2,.hex-map-visualisation h3,.hex-map-visualisation h4,.hex-map-visualisation p{font-family:"acumin-pro-extra-condensed";color:#fff;z-index:500}.hex-map-visualisation .clear:after{content:"";display:block;clear:both}.hex-map-visualisation .map-inner{overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}.hex-map-visualisation .map-inner::-webkit-scrollbar{width:0;height:0}.hex-map-visualisation #visual-title{text-transform:uppercase;line-height:45px;font-size:54px;text-align:center;z-index:5;display:block;padding-bottom:20px}.hex-map-visualisation .visual-information{position:absolute;pointer-events:none;width:100%;z-index:500;margin:auto;display:table}.hex-map-visualisation .visual-information .title-sections,.hex-map-visualisation .visual-information .title-sections-mobile{display:flex;flex-direction:column;width:calc(50% - 2px);height:245px;float:left;text-align:center}.hex-map-visualisation .visual-information .title-sections .target,.hex-map-visualisation .visual-information .title-sections-mobile .target{background:rgba(0,0,0,0.39);margin-left:20px;border-radius:7px;visibility:hidden}.hex-map-visualisation .visual-information .title-sections .target h1,.hex-map-visualisation .visual-information .title-sections-mobile .target h1{margin:0}.hex-map-visualisation .visual-information .title-sections .target .target-figures .leave,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .leave,.hex-map-visualisation .visual-information .title-sections .target .target-figures .remain,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .remain{width:25%;display:inline-block;line-height:30px}.hex-map-visualisation .visual-information .title-sections .target .target-figures .leave span,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .leave span,.hex-map-visualisation .visual-information .title-sections .target .target-figures .remain span,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .remain span{width:100%;display:block}.hex-map-visualisation .visual-information .title-sections .target .target-figures .leave span.percent,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .leave span.percent,.hex-map-visualisation .visual-information .title-sections .target .target-figures .remain span.percent,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .remain span.percent{font-size:48px}.hex-map-visualisation .visual-information .title-sections .target .target-figures .leave span.number,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .leave span.number,.hex-map-visualisation .visual-information .title-sections .target .target-figures .remain span.number,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .remain span.number{font-size:22px;margin-top:5px}.hex-map-visualisation .visual-information .title-sections-mobile{width:100%;position:absolute;bottom:33%}.hex-map-visualisation .visual-information .title-sections-mobile .target{margin-left:0}.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures{display:flex}.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .leave,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .remain{width:50%}.hex-map-visualisation .map-keys{display:flex;justify-content:center;margin:20px 0 20px 0}.hex-map-visualisation .map-keys .map-key-single p{display:inline;padding:10px 20px;font-size:22px;line-height:34px}.hex-map-visualisation .map-keys .map-key-single ul{display:inline}.hex-map-visualisation .hex-grid,.hex-map-visualisation .keys{position:relative;margin:0 auto;padding:0}.hex-map-visualisation .hex-grid li,.hex-map-visualisation .keys li{list-style-type:none;position:relative;float:left;cursor:pointer;-o-transform:rotate(-60deg) skewY(30deg);-moz-transform:rotate(-60deg) skewY(30deg);-webkit-transform:rotate(-60deg) skewY(30deg);-ms-transform:rotate(-60deg) skewY(30deg);transform:rotate(-60deg) skewY(30deg);background:#fd005f;overflow:hidden;visibility:hidden}.hex-map-visualisation .hex-grid li *,.hex-map-visualisation .keys li *{visibility:visible}.hex-map-visualisation .hex-grid li .hexagon,.hex-map-visualisation .keys li .hexagon{position:absolute;top:0;left:0;width:100%;height:100%;background:#fdbf00;-o-transform:skewY(-30deg) rotate(60deg);-moz-transform:skewY(-30deg) rotate(60deg);-webkit-transform:skewY(-30deg) rotate(60deg);-ms-transform:skewY(-30deg) rotate(60deg);transform:skewY(-30deg) rotate(60deg);overflow:hidden}.hex-map-visualisation .hex-grid li .style-0,.hex-map-visualisation .keys li .style-0{background:#ffcb00}.hex-map-visualisation .hex-grid li .style-1,.hex-map-visualisation .keys li .style-1{background:#0089da}.hex-map-visualisation .hex-grid li .style-2,.hex-map-visualisation .keys li .style-2{background:#282828}.hex-map-visualisation .hex-grid li.translate,.hex-map-visualisation .keys li.translate{margin-top:-8px;-o-transform:translateX(50%) rotate(-60deg) skewY(30deg);-moz-transform:translateX(50%) rotate(-60deg) skewY(30deg);-webkit-transform:translateX(50%) rotate(-60deg) skewY(30deg);-ms-transform:translateX(50%) rotate(-60deg) skewY(30deg);transform:translateX(50%) rotate(-60deg) skewY(30deg)}.hex-map-visualisation .keys li{padding:16px 14px}@media screen and (max-width: 1200px){.hex-map-visualisation #visual-title{line-height:45px;font-size:48px}.hex-map-visualisation .visual-information .title-sections,.hex-map-visualisation .visual-information .title-sections-mobile{width:calc(50% - 2px);height:245px}.hex-map-visualisation .visual-information .title-sections .target .target-figures .leave,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .leave,.hex-map-visualisation .visual-information .title-sections .target .target-figures .remain,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .remain{width:35%;display:inline-block;line-height:30px}.hex-map-visualisation .visual-information .title-sections .target .target-figures .leave span.percent,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .leave span.percent,.hex-map-visualisation .visual-information .title-sections .target .target-figures .remain span.percent,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .remain span.percent{font-size:36px}.hex-map-visualisation .visual-information .title-sections .target .target-figures .leave span.number,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .leave span.number,.hex-map-visualisation .visual-information .title-sections .target .target-figures .remain span.number,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .remain span.number{font-size:20px;margin-top:3px}.hex-map-visualisation .visual-information .title-sections-mobile .target{margin-left:0}.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures{display:flex}.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .leave,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .remain{width:50%}}@media screen and (max-width: 768px){.hex-map-visualisation #visual-title{line-height:45px;font-size:42px}.hex-map-visualisation .visual-information .title-sections .target .target-figures .leave,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .leave,.hex-map-visualisation .visual-information .title-sections .target .target-figures .remain,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .remain{width:50%;display:inline-block;line-height:30px}.hex-map-visualisation .visual-information .title-sections .target .target-figures .leave span.percent,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .leave span.percent,.hex-map-visualisation .visual-information .title-sections .target .target-figures .remain span.percent,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .remain span.percent{font-size:36px}.hex-map-visualisation .visual-information .title-sections .target .target-figures .leave span.number,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .leave span.number,.hex-map-visualisation .visual-information .title-sections .target .target-figures .remain span.number,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .remain span.number{font-size:20px;margin-top:3px}.hex-map-visualisation .visual-information .title-sections-mobile{width:100%}.hex-map-visualisation .visual-information .title-sections-mobile .target{margin-left:0}.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures{display:flex}.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .leave,.hex-map-visualisation .visual-information .title-sections-mobile .target .target-figures .remain{width:50%}}@media screen and (max-width: 600px){.hex-map-visualisation #visual-title{line-height:45px;font-size:48px}.hex-map-visualisation .visual-map #visual-title{margin-bottom:-25px}.hex-map-visualisation .visual-map .map-inner .hex-grid,.hex-map-visualisation .visual-map .map-inner .keys{transform:scale(0.8);margin-left:-50px}}@media screen and (max-width: 500px){.hex-map-visualisation .visual-map #visual-title{font-size:36px;padding:0px 20px;margin-bottom:-50px}.hex-map-visualisation .visual-map .map-inner{margin-bottom:-100px}.hex-map-visualisation .visual-map .map-inner .hex-grid,.hex-map-visualisation .visual-map .map-inner .keys{transform:scale(0.7);margin-left:-90px}}@media screen and (max-width: 400px){.hex-map-visualisation .visual-map #visual-title{margin-bottom:-50px}.hex-map-visualisation .visual-map .map-inner{margin-bottom:-125px}.hex-map-visualisation .visual-map .map-inner .hex-grid,.hex-map-visualisation .visual-map .map-inner .keys{transform:scale(0.6);margin-left:-140px;margin-top:-60px}}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<div class="hex-map-visualisation">
+    <div class="visual-map" ng-app="myApp" ng-controller="myController" id="myController">
+        <h1 class="" id="visual-title">How Britain voted in the EU referendum</h1>
+        <div class="visual-information">
+            <div class="title-sections">
+                <div class="target topLeft">
+                    <h1 class="">{{viewable.area}}</h1>
+                    <div class="target-figures"></div>
+                </div>
+            </div>
+            <div class="title-sections">
+                <div class="target topRight">
+                    <h1 class="">{{viewable.area}}</h1>
+                    <div class="target-figures"></div>
+                </div>
+            </div>
+            <div class="title-sections">
+                <div class="target midLeft">
+                    <h1 class="">{{viewable.area}}</h1>
+                    <div class="target-figures"></div>
+                </div>
+            </div>
+            <div class="title-sections">
+                <div class="target midRight">
+                    <h1 class=""></h1>
+                </div>
+            </div>
+            <div class="title-sections">
+                <div class="target btmLeft">
+                    <h1 class="">{{viewable.area}}</h1>
+                    <div class="target-figures"></div>
+                </div>
+            </div>
+            <div class="title-sections">
+                <div class="target btmRight">
+                    <h1 class=""></h1>
+                </div>
+            </div>
+            <div class="title-sections-mobile">
+                <div class="target mobile">
+                    <h1 class="">{{viewable.area}}</h1>
+                    <div class="target-figures">
+                        <h2 class="leave"><span class="percent"></span><span class="number"></span></h2>
+                        <h2 class="remain"><span class="percent"></span><span class="number"></span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="map-inner">
+            <ul id="" class="hex-grid clear">
+                <li class="" ng-repeat="x in points" ng-style="{{x.style}}">
+                    <div class="hexagon style-{{x.status}}" data-id="{{x.id}}"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="map-keys">
+            <div class="map-key-single" ng-repeat="k in mapKeys">
+                <p>{{k.legend}}</p>
+                <ul class="hex-grid clear">
+                    <li class="" style="padding: 16px 14px;">
+                        <div class="hexagon style-{{k.colour}}"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myController', ['$scope', '$window', '$http', function ($scope, $window, $http) {
+        $http.get("https://multimedia.thenational.ae/assets/visual_assets/uk_brexit_visual/data.csv")
+            .then(function (response) {
+                $scope.src = processData(response.data);
+                $window.src = $scope.src;
+            }).then(function () {
+                $http.get("https://multimedia.thenational.ae/assets/visual_assets/uk_brexit_visual/map.csv")
+                    .then(function (response) {
+                        $scope.points = processMap(response.data);
+                        let gridWidth = 600;
+                        let gridRowLength = 30;
+                        let pointWidth = Math.max((gridWidth / gridRowLength) / 2);
+                        let pointHeight = Math.max(pointWidth * 1.13333);
+                        $scope.mapKeys = [
+                            {
+                                "legend": "Remain",
+                                "colour": 0,
+                            },
+                            {
+                                "legend": "Leave",
+                                "colour": 1,
+                            },
+                        ];
+                        $scope.points.forEach(function (point) {
+                            point['style'] = { 'padding': pointHeight + 'px ' + pointWidth + 'px ' };
+                            if (point['row'] > 1) {
+                                point['style']['margin-top'] = '-' + ((pointHeight / 2) - 1) + 'px';
+                            }
+                            if ((point['row'] % 2) == 0) {
+                                point['style']['transform'] = 'translateX(50%) rotate(-60deg) skewY(30deg)';
+                            }
+                        });
+                        $('.hex-grid').css('width', gridWidth + 'px');
+                        $window.points = $scope.points;
+                        $scope.viewableVote = "Hover to see Vote";
+                    });
+            });
+
+        $scope.updateViewable = function (id, origin, target) {
+            $scope.viewable = $scope.points[id];
+            target = '.' + target;
+            $('.target').css('visibility', 'hidden');
+
+            if ($scope.viewable.status != 2) {
+                $(target).css('visibility', 'visible');
+                let targetInfoBox = $(target + ' h1');
+                targetInfoBox.show();
+                targetInfoBox.css('color', getStatusColor($scope.viewable.status));
+                let targetFigures = $(target + ' .target-figures');
+                targetFigures.empty();
+                targetFigures.append("<h2 class='leave'>Leave voters <span class='percent'></span><span class='number'></span></h2>");
+                targetFigures.append("<h2 class='remain'>Remain voters <span class='percent'></span><span class='number'></span></h2>");
+                let percentages = getPercentage($scope.viewable.leave, $scope.viewable.remain);
+                $('.target-figures .leave span.percent').html(percentages.leave + '%');
+                $('.target-figures .remain span.percent').html(percentages.remain + '%');
+                $('.target-figures .leave span.number').html(numberWithCommas($scope.viewable.leave) + ' Votes');
+                $('.target-figures .remain span.number').html(numberWithCommas($scope.viewable.remain) + ' Votes');
+            }
+        }
+    }]);
+
+    $(function () {
+        $(".visual-map").on("mouseover", ".hexagon", function (event) {
+            let gridItemStatus = $(this).data('id');
+            angular.element('#myController').scope().updateViewable(gridItemStatus, event.target, getRegionTarget(points[gridItemStatus].region));
+            angular.element('#myController').scope().$apply();
+        });
+    });
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function getPercentage(leave, remain) {
+        let total = parseInt(leave) + parseInt(remain);
+        return {
+            'leave': (parseFloat(parseInt(leave) / total) * 100).toFixed(1),
+            'remain': (parseFloat(parseInt(remain) / total) * 100).toFixed(1),
+        }
+    }
+
+    function getStatusColor(status) {
+        switch (status) {
+            case 0: return '#ffcb00';
+            case 1: return '#0089da';
+            default: return '#ffcb00';
+        }
+    }
+
+    function getRegionTarget(region) {
+        if ($(window).width() <= 768) {
+            return 'mobile';
+        } else {
+            switch (region) {
+                case 'East': return 'midLeft';
+                case 'Wales': return 'midLeft';
+                case 'Scotland': return 'topLeft';
+                case 'South West': return 'btmLeft';
+                case 'South East': return 'midLeft';
+                case 'London': return 'midLeft';
+                case 'East Midlands': return 'midLeft';
+                case 'West Midlands': return 'midLeft';
+                case 'North West': return 'midLeft';
+                case 'North East': return 'midLeft';
+                case 'Northern Ireland': return 'midLeft';
+                case 'Yorkshire and The Humber': return 'midLeft';
+                default: return 'midLeft';
+            }
+        }
+    }
+
+    function DataPoint(id, region, area, vote, remain, leave) {
+        this.id = id;
+        this.region = region;
+        this.area = area;
+        this.vote = vote;
+        this.remain = remain;
+        this.leave = leave;
+    }
+
+    function MapPoint(id, row, column, status, remain, leave, area, region, style, vote) {
+        this.id = id;
+        this.row = row;
+        this.column = column;
+        this.status = status;
+        this.remain = remain;
+        this.leave = leave;
+        this.area = area;
+        this.region = region;
+        this.style = style;
+        this.vote = vote;
+    }
+
+    function processData(allText) {
+        let allTextLines = allText.split(/\r\n|\n/);
+        let headers = allTextLines[0].split(',');
+        let count = 0;
+        let dataPoints = [];
+        for (let i = 1; i < allTextLines.length; i++) {
+            let data = allTextLines[i].split(',');
+            if (data.length == headers.length) {
+                let dataPoint = new DataPoint(count, undefined, undefined, undefined, undefined, undefined);
+                for (let j = 0; j < headers.length; j++) {
+                    dataPoint[headers[j]] = data[j];
+                }
+                dataPoints.push(dataPoint);
+                count++;
+            }
+        }
+        return dataPoints;
+    }
+
+    function processMap(data) {
+        let lines = data.split(/\r\n|\n/);
+        let points = [];
+        let count = 0;
+        for (let i = 0; i < lines.length; i++) {
+            let line = lines[i];
+            let cols = line.split(',');
+            for (let j = 0; j < cols.length; j++) {
+                let id = count;
+                let row = i + 1;
+                let column = j + 1;
+                let mapPoint = new MapPoint(id, row, column, 2, undefined, undefined, undefined, undefined, 2, undefined);
+                if (cols[j] != 'X') {
+                    let index = cols[j];
+                    let vote = 'r';
+                    let remain = 1000;
+                    let leave = 999;
+                    let area = "somewhere";
+                    let region = "central";
+                    let style, status;
+                    if (src[index]) {
+                        vote = src[index]['vote'];
+                        remain = src[index]['remain'];
+                        leave = src[index]['leave'];
+                        area = src[index]['area'];
+                        region = src[index]['region'];
+                        style, status;
+                    }
+                    if (vote == 'r') {
+                        vote = 'Remain';
+                        style = status = 0;
+                    } else if (vote == 'l') {
+                        vote = 'Leave';
+                        style = status = 1;
+                    }
+                    mapPoint = new MapPoint(id, row, column, status, remain, leave, area, region, style, vote);
+                }
+                count++;
+                points.push(mapPoint);
+            }
+        }
+        return points;
+    }
+
+</script>

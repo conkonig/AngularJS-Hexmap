@@ -1,16 +1,16 @@
 region,area,vote,remain,leave
-East,Peterborough,l,34176,53216
-East,Luton,l,36708,47773
-East,Southend-on-Sea,l,39348,54522
-East,Thurrock,l,22151,57765
-East,Bedford,l,41497,44569
-East,Central Bedfordshire,l,69670,89134
-East,Cambridge,r,42682,15117
-East,East Cambridgeshire,l,23599,24487
-East,Fenland,l,15055,37571
-East,Huntingdonshire,l,45729,54198
-East,South Cambridgeshire,r,56128,37061
-East,Basildon,l,30748,67251
+East,Peterborough,L,34176,53216
+East,Luton,L,36708,47773
+East,Southend-on-Sea,L,39348,54522
+East,Thurrock,L,22151,57765
+East,Bedford,L,41497,44569
+East,Central Bedfordshire,L,69670,89134
+East,Cambridge,R,42682,15117
+East,East Cambridgeshire,L,23599,24487
+East,Fenland,L,15055,37571
+East,Huntingdonshire,L,45729,54198
+East,South Cambridgeshire,R,56128,37061
+East,Basildon,L,30748,67251
 East,Braintree,l,33523,52713
 East,Brentwood,l,19077,27627
 East,Castle Point,l,14154,37691
@@ -271,7 +271,7 @@ South East,Horsham,r,43785,41303
 South East,Mid Sussex,r,46471,41057
 South East,Worthing,l,28851,32515
 South West,Bath and North East Somerset,r,60878,44352
-South West,Bristol,r,141027,87418
+South West,Bristol City of,r,141027,87418
 South West,North Somerset,l,59572,64976
 South West,South Gloucestershire,l,74928,83405
 South West,Plymouth,l,53458,79997
@@ -330,7 +330,7 @@ Wales,Monmouthshire,r,28061,27569
 Wales,Newport,l,32413,41236
 Wales,Powys,l,36762,42707
 Wales,Merthyr Tydfil,l,12574,16291
-West Midlands,Herefordshire,l,44148,64122
+West Midlands,Herefordshire County of,l,44148,64122
 West Midlands,Telford and Wrekin,l,32954,56649
 West Midlands,Stoke-on-Trent,l,36027,81563
 West Midlands,Shropshire,l,78987,104166
@@ -360,7 +360,7 @@ West Midlands,Sandwell,l,49004,98250
 West Midlands,Solihull,l,53466,68484
 West Midlands,Walsall,l,43572,92007
 West Midlands,Wolverhampton,l,44138,73798
-Yorkshire and The Humber,Kingston upon Hull,l,36709,76646
+Yorkshire and The Humber,Kingston upon Hull City of,l,36709,76646
 Yorkshire and The Humber,East Riding of Yorkshire,l,78779,120136
 Yorkshire and The Humber,North East Lincolnshire,l,23797,55185
 Yorkshire and The Humber,North Lincolnshire,l,29947,58915
@@ -381,3 +381,21 @@ Yorkshire and The Humber,Calderdale,l,46950,58975
 Yorkshire and The Humber,Kirklees,l,98485,118755
 Yorkshire and The Humber,Leeds,r,194863,192474
 Yorkshire and The Humber,Wakefield,l,58877,116165
+Northern Ireland,Foyle,r,32064,8905
+Northern Ireland,East Londonderry,r,21098,18455
+Northern Ireland,North Antrim,l,18782,30938
+Northern Ireland,East Antrim,l,18616,22929
+Northern Ireland,West Tyrone,r,13274,26765
+Northern Ireland,Mid Ulster,r,25612,16799
+Northern Ireland,South Antrim,r,22055,21498
+Northern Ireland,North Down,r,23131,21046
+Northern Ireland,Fermanagh and South Tyrone,r,19958,28200
+Northern Ireland,Newry and Armagh,r,18659,31693
+Northern Ireland,Upper Bann,l,27262,24550
+Northern Ireland,Lagan Valley,l,22710,25704
+Northern Ireland,Belfast North,r,20128,19844
+Northern Ireland,Belfast East,l,20728,21918
+Northern Ireland,Belfast South,r,30960,13596
+Northern Ireland,Belfast West,r,23099,8092
+Northern Ireland,Strangford,l,18727,23383
+Northern Ireland,South Down,r,32076,15625
