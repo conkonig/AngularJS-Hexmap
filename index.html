@@ -92,6 +92,7 @@
                 $window.src = $scope.src;
                 console.log($scope.src);
             }).then(function () {
+                // Random comment
                 $http.get("https://multimedia.thenational.ae/assets/visual_assets/uk_brexit_visual/map.csv")
                     .then(function (response) {
                         $scope.points = processMap(response.data);
